@@ -1,0 +1,10 @@
+E:\Users\Francesco\Documents\Software development\Repository\C Sharp\NotePadDev\NotePadDev\NotePadDev\bin\Debug\NotePadDev.exe.config
+E:\Users\Francesco\Documents\Software development\Repository\C Sharp\NotePadDev\NotePadDev\NotePadDev\bin\Debug\NotePadDev.exe
+E:\Users\Francesco\Documents\Software development\Repository\C Sharp\NotePadDev\NotePadDev\NotePadDev\bin\Debug\NotePadDev.pdb
+E:\Users\Francesco\Documents\Software development\Repository\C Sharp\NotePadDev\NotePadDev\NotePadDev\obj\Debug\NotePadDev.csprojAssemblyReference.cache
+E:\Users\Francesco\Documents\Software development\Repository\C Sharp\NotePadDev\NotePadDev\NotePadDev\obj\Debug\NotePadDev.NotePadDevForm.resources
+E:\Users\Francesco\Documents\Software development\Repository\C Sharp\NotePadDev\NotePadDev\NotePadDev\obj\Debug\NotePadDev.Properties.Resources.resources
+E:\Users\Francesco\Documents\Software development\Repository\C Sharp\NotePadDev\NotePadDev\NotePadDev\obj\Debug\NotePadDev.csproj.GenerateResource.cache
+E:\Users\Francesco\Documents\Software development\Repository\C Sharp\NotePadDev\NotePadDev\NotePadDev\obj\Debug\NotePadDev.csproj.CoreCompileInputs.cache
+E:\Users\Francesco\Documents\Software development\Repository\C Sharp\NotePadDev\NotePadDev\NotePadDev\obj\Debug\NotePadDev.exe
+E:\Users\Francesco\Documents\Software development\Repository\C Sharp\NotePadDev\NotePadDev\NotePadDev\obj\Debug\NotePadDev.pdb
