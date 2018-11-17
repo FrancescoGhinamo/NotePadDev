@@ -48,6 +48,13 @@ namespace NotePadDev
 
         }
 
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //get the destination with a file picker
+            doc.SaveToFile("C:\\Users\\Francesco\\Desktop\\Text.txt");
+            doc.Modified = false;
+        }
+
         private void txtText_TextChanged(object sender, EventArgs e)
         {
             doc.Content = txtText.Text;
@@ -55,5 +62,7 @@ namespace NotePadDev
         }
 
         #endregion EventHandlers
+
+       
     }
 }

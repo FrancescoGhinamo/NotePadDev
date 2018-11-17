@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -48,7 +49,20 @@ namespace NotePadDev.Notepad.Backend.Data
 
 
         #region FileSavingMethods
-        
+        /// <summary>
+        /// Saves the document on a file
+        /// </summary>
+        /// <param name="path">Path of the file where to save the document</param>
+        public void SaveToFile(string path)
+        {
+            //here I have to overwrite the file
+            FileStream stream = File.Create(path);
+            StreamWriter writer = new StreamWriter(stream);
+            writer.WriteLine(this.Content);
+            writer.Flush();
+            writer.Close();
+            stream.Close();
+        }
         #endregion FileSavingMethods
 
 
