@@ -50,9 +50,15 @@ namespace NotePadDev
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //get the destination with a file picker
-            doc.SaveToFile("C:\\Users\\Francesco\\Desktop\\Text.txt");
-            doc.Modified = false;
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.AddExtension = true;
+            saveDialog.DefaultExt = "txt";
+            if(saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                doc.SaveToFile(saveDialog.FileName);
+                doc.Modified = false;
+            }
+           
         }
 
         private void txtText_TextChanged(object sender, EventArgs e)

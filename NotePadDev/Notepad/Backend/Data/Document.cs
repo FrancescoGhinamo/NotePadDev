@@ -45,6 +45,8 @@ namespace NotePadDev.Notepad.Backend.Data
             Content = text;
             Modified = false;
         }
+
+
         #endregion Construtor
 
 
