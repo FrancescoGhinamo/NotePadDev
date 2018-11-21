@@ -36,13 +36,18 @@ namespace NotePadDev.Notepad.Backend.Data
             Modified = false;
         }
 
+
         /// <summary>
-        /// Creates a new instance of a document from a given text, the document results not modified
+        /// Creates a new instance of a document from a file
         /// </summary>
-        /// <param name="text">Text from which build the Document</param>
-        public Document(string text)
+        /// <param name="path">Path of the file from which create the document</param>
+        public Document(string path)
         {
-            Content = text;
+            FileStream stream = File.Open(path, FileMode.Open);
+            StreamReader reader = new StreamReader(stream);
+            Content = reader.ReadToEnd();
+            reader.Close();
+            stream.Close();
             Modified = false;
         }
 
