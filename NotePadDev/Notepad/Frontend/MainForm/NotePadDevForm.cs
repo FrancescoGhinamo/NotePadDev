@@ -92,81 +92,42 @@ namespace NotePadDev
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
-            if (doc.Modified)
-            {
-                DialogResult confirmResult = MessageBox.Show("Save changes to " + fileName + "?", TITLE, MessageBoxButtons.YesNoCancel);
-                switch (confirmResult)
-                {
-                    case DialogResult.Yes:
-                        saveToolStripMenuItem_Click(sender, e);
-                        break;
 
-                    case DialogResult.No:
-                        break;
-
-                    case DialogResult.Cancel:
-                        return;
-
-                    default:
-                        return;
-
-                }
-            }
-
-            currentFile = null;
-            DisplayFileTitle(DEFAULT_FILE_NAME);
-            UpdateDisplayedText();
-            doc = new Document();
+            NewDocument();
         }
 
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog open = new OpenFileDialog();
-            open.AddExtension = true;
-            open.DefaultExt = "txt";
-            if(open.ShowDialog() == DialogResult.OK)
-            {
-                currentFile = open.FileName;
-                DisplayFileTitle(currentFile);
-                doc = new Document(currentFile);
-                UpdateDisplayedText();
-            }
+            OpenDocument();
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(currentFile != null)
-            {
-                doc.SaveToFile(currentFile);
-                doc.Modified = false;
-            }
-            else
-            {
-                saveAsToolStripMenuItem_Click(sender, e);
-            }
+            SaveDocument();
         }
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SaveFileDialog saveDialog = new SaveFileDialog();
-            saveDialog.AddExtension = true;
-            saveDialog.DefaultExt = "txt";
-            if(saveDialog.ShowDialog() == DialogResult.OK)
-            {
-                currentFile = saveDialog.FileName;
-                DisplayFileTitle(currentFile);
-                saveToolStripMenuItem_Click(sender, e);
-            }
-           
+            SaveAs();
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            newToolStripMenuItem_Click(sender, e);            
-            System.Environment.Exit(0);
+            Exit();
         }
+
+        private void NotePadDevForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void NotePadDevForm_Closing(object sender, EventArgs e)
+        {
+            Exit();
+        }
+
+
 
         private void txtText_TextChanged(object sender, EventArgs e)
         {
@@ -175,10 +136,131 @@ namespace NotePadDev
         }
 
 
+        private void cutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtText.Cut();
+        }
 
+        private void copyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtText.Copy();
+        }
+
+        private void pasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            txtText.Paste();
+        }
 
         #endregion EventHandlers
 
-       
+        #region MainMethods
+
+        /// <summary>
+        /// Prepares the notepad for a new document
+        /// </summary>
+        /// <returns>Result of the dialog displayed in case of a non-saved file</returns>
+        public DialogResult NewDocument()
+        {
+            DialogResult confirmResult = DialogResult.Yes;
+            if (doc.Modified)
+            {
+                confirmResult = MessageBox.Show("Save changes to " + fileName + "?", TITLE, MessageBoxButtons.YesNoCancel);
+                switch (confirmResult)
+                {
+                    case DialogResult.Yes:
+                        SaveDocument();
+                        break;
+
+                    case DialogResult.No:
+                        break;
+
+                    case DialogResult.Cancel:
+                        return confirmResult;
+
+                    default:
+                        return confirmResult;
+
+                }
+            }
+
+            currentFile = null;
+            DisplayFileTitle(DEFAULT_FILE_NAME);
+            UpdateDisplayedText();
+            doc = new Document();
+            return confirmResult;
+
+        }
+
+        /// <summary>
+        /// Opens a new text document
+        /// </summary>
+        public void OpenDocument()
+        {
+            OpenFileDialog open = new OpenFileDialog
+            {
+                AddExtension = true,
+                DefaultExt = "txt"
+            };
+
+            if (open.ShowDialog() == DialogResult.OK)
+            {
+                currentFile = open.FileName;
+                DisplayFileTitle(currentFile);
+                doc = new Document(currentFile);
+                UpdateDisplayedText();
+            }
+        }
+
+        /// <summary>
+        /// Saves the document to the currentFile. I there's no current the method <see cref="SaveAs"/> is called
+        /// </summary>
+        public void SaveDocument()
+        {
+            if (currentFile != null)
+            {
+                doc.SaveToFile(currentFile);
+                doc.Modified = false;
+            }
+            else
+            {
+                SaveAs();
+            }
+        }
+
+        /// <summary>
+        /// Saves the document to a file, the user will be prompted to choose the file
+        /// </summary>
+        public void SaveAs()
+        {
+            SaveFileDialog saveDialog = new SaveFileDialog
+            {
+                AddExtension = true,
+                DefaultExt = "txt"
+            };
+
+            if (saveDialog.ShowDialog() == DialogResult.OK)
+            {
+                currentFile = saveDialog.FileName;
+                DisplayFileTitle(currentFile);
+                SaveDocument();
+            }
+        }
+
+        /// <summary>
+        /// Exits the program. If the file is not saved, displays a confirmaion dialog
+        /// </summary>
+        public void Exit()
+        {
+            if(NewDocument() != DialogResult.Cancel)
+            {
+                Environment.Exit(0);
+            }
+        }
+
+
+
+        #endregion MainMethods
+
+        
     }
 }

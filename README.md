@@ -1,3 +1,3 @@
 # NotePadDev
 
-Notepad application with functions oriented to software development
+Notepad application with basic functions
