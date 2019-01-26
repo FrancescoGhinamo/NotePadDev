@@ -1,0 +1,9 @@
+C:\Users\franc\source\repos\NotePadDev\NotePadDev\bin\Release\NotePadDev.exe.config
+C:\Users\franc\source\repos\NotePadDev\NotePadDev\bin\Release\NotePadDev.exe
+C:\Users\franc\source\repos\NotePadDev\NotePadDev\bin\Release\NotePadDev.pdb
+C:\Users\franc\source\repos\NotePadDev\NotePadDev\obj\Release\NotePadDev.NotePadDevForm.resources
+C:\Users\franc\source\repos\NotePadDev\NotePadDev\obj\Release\NotePadDev.Properties.Resources.resources
+C:\Users\franc\source\repos\NotePadDev\NotePadDev\obj\Release\NotePadDev.csproj.GenerateResource.cache
+C:\Users\franc\source\repos\NotePadDev\NotePadDev\obj\Release\NotePadDev.csproj.CoreCompileInputs.cache
+C:\Users\franc\source\repos\NotePadDev\NotePadDev\obj\Release\NotePadDev.exe
+C:\Users\franc\source\repos\NotePadDev\NotePadDev\obj\Release\NotePadDev.pdb
